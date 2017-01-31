@@ -302,6 +302,26 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
             Assert.Equal("String", result);
         }
 
+        [Fact]
+        public void GetMetadataForType_ByDefaultThrows_NotImplementedException()
+        {
+            // Arrange
+            var metadata = new TestModelMetadata(typeof(string));
+
+            // Act & Assert
+            var result = Assert.Throws<NotImplementedException>(() => metadata.GetMetadataForType(typeof(string)));
+        }
+
+        [Fact]
+        public void GetMetadataForProperties_ByDefaultThrows_NotImplementedException()
+        {
+            // Arrange
+            var metadata = new TestModelMetadata(typeof(string));
+
+            // Act & Assert
+            var result = Assert.Throws<NotImplementedException>(() => metadata.GetMetadataForProperties(typeof(string)));
+        }
+
         private class TestModelMetadata : ModelMetadata
         {
             private string _displayName;
